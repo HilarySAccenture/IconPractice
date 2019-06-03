@@ -9,13 +9,13 @@ namespace Icon.IntegrationTests
 {
     public class IconShould
     {
+        private string _fileName = GetGeckoDriverName();
+
         [Fact]
         public void DisplayExpectedText()
         {
-            var currentDirectory = Environment.CurrentDirectory;
-            var services = FirefoxDriverService.CreateDefaultService(currentDirectory,
-                "geckodrivermac");
-            var driver = new FirefoxDriver(services);
+            var driver = CreateWebDriver();
+
             var result = string.Empty;
 
             try
@@ -32,6 +32,31 @@ namespace Icon.IntegrationTests
             }
 
             result.ShouldContain("Hello World");
+        }
+        
+        private static string GetGeckoDriverName()
+        {
+            var remoteFileName = Environment.GetEnvironmentVariable("TravisWebDriver");
+            var driverName = "geckodrivermac";
+
+            if (remoteFileName == "TravisWebDriver")
+            {
+                driverName = remoteFileName;
+            }
+
+            return driverName; 
+        }
+
+
+        public FirefoxDriver CreateWebDriver()
+        {
+            var currentDirectory = Environment.CurrentDirectory;
+            
+            var services = FirefoxDriverService.CreateDefaultService(currentDirectory,
+                _fileName);
+            var driver = new FirefoxDriver(services);
+
+            return driver;
         }
     }
 }
