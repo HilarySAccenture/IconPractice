@@ -39,7 +39,7 @@ namespace Icon.IntegrationTests
             var remoteFileName = Environment.GetEnvironmentVariable("TravisWebDriver");
             var driverName = "geckodrivermac";
 
-            if (remoteFileName == "geckodrivelinux")
+            if (remoteFileName == "geckodriverlinux")
             {
                 driverName = remoteFileName;
             }
