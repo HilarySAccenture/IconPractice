@@ -22,7 +22,7 @@ namespace Icon.IntegrationTests
             
             driver.Quit();
             
-            result.ShouldContain("car");
+            result.ShouldContain("Hello World");
             
         }
     }
