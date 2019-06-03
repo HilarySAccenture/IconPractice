@@ -1,0 +1,6 @@
+#!/bin/bash -ue
+
+cd ..
+docker build -t latest .
+docker run -d -p 8000:80 --name iconDocker latest
+

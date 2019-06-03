@@ -1,0 +1,4 @@
+#!/bin/bash -ue
+
+cd ../Icon.IntegrationTests
+dotnet test 
