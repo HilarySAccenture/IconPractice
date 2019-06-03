@@ -2,3 +2,8 @@
 
 cd ../Icon.IntegrationTests
 dotnet test 
+
+
+
+docker stop iconDocker 
+docker rm iconDocker
