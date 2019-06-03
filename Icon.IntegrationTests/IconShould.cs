@@ -1,4 +1,5 @@
 using System;
+using OpenQA.Selenium;
 using Xunit;
 using Shouldly;
 using OpenQA.Selenium.Firefox;
@@ -12,18 +13,25 @@ namespace Icon.IntegrationTests
         public void DisplayExpectedText()
         {
             var currentDirectory = Environment.CurrentDirectory;
-            var services = FirefoxDriverService.CreateDefaultService(currentDirectory, 
+            var services = FirefoxDriverService.CreateDefaultService(currentDirectory,
                 "geckodrivermac");
             var driver = new FirefoxDriver(services);
-            
-            driver.Navigate().GoToUrl("http://localhost:5000/");
+            var result = string.Empty;
 
-            var result = driver.FindElementByTagName("pre").Text;
-            
-            driver.Quit();
-            
+            try
+            {
+                driver.Navigate().GoToUrl("http://localhost:5000/");
+                result = driver.FindElementByTagName("pre").Text;
+            }
+            catch (WebDriverException ex)
+            {
+            }
+            finally
+            {
+                driver.Quit();
+            }
+
             result.ShouldContain("Hello World");
-            
         }
     }
 }
