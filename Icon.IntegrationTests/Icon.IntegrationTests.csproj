@@ -17,6 +17,12 @@
 
     <ItemGroup>
       <ProjectReference Include="..\IconPractice\IconPractice.csproj" />
+        <None Update="geckodrivermac">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+        <None Update="geckodriverlinux">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
     </ItemGroup>
 
   
