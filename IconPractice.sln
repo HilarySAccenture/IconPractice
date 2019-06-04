@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IconPractice", "IconPractic
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Icon.IntegrationTests", "Icon.IntegrationTests\Icon.IntegrationTests.csproj", "{C96B259F-0D62-4469-830E-984E0090F64C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Icon.UnitTests", "Icon.UnitTests\Icon.UnitTests.csproj", "{DE0928E1-E9F2-465E-A0CE-0CE27F4FC72B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{C96B259F-0D62-4469-830E-984E0090F64C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C96B259F-0D62-4469-830E-984E0090F64C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C96B259F-0D62-4469-830E-984E0090F64C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE0928E1-E9F2-465E-A0CE-0CE27F4FC72B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE0928E1-E9F2-465E-A0CE-0CE27F4FC72B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE0928E1-E9F2-465E-A0CE-0CE27F4FC72B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE0928E1-E9F2-465E-A0CE-0CE27F4FC72B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
