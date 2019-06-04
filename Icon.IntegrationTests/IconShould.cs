@@ -21,7 +21,7 @@ namespace Icon.IntegrationTests
             try
             {
                 driver.Navigate().GoToUrl("http://localhost:8000/");
-                result = driver.FindElementByTagName("pre").Text;
+                result = driver.FindElementByTagName("p").Text;
             }
             catch (WebDriverException ex)
             {
@@ -31,7 +31,7 @@ namespace Icon.IntegrationTests
                 driver.Quit();
             }
 
-            result.ShouldContain("Hello World");
+            result.ShouldContain("Gattaca");
         }
         
         private static string GetGeckoDriverName()
