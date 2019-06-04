@@ -55,7 +55,7 @@ namespace Icon.IntegrationTests
             options.AddArgument("--headless");
             var services = FirefoxDriverService.CreateDefaultService(currentDirectory,
                 _fileName);
-            var driver = new FirefoxDriver(services);
+            var driver = new FirefoxDriver(services, options);
 
             return driver;
         }
