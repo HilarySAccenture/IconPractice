@@ -9,10 +9,9 @@ dist: xenial
 dotnet: 2.2 
 git:
   depth: false
-script: # These commands are executed in the Travis VM just like you would on your local machine
-    # Use a "cd" command to move the Travis command line prompt into your solution directory
-    - cd /home/travis/build/HilarySAccenture/IconPractice/Scripts/
-    - ./StartDockerIcon
-    - ./RunIntegrationTests
+script: 
+  - cd /home/travis/build/HilarySAccenture/IconPractice/Scripts/
+  - ./StartDockerIcon
+  - ./RunIntegrationTests
   
 
