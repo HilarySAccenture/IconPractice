@@ -9,7 +9,7 @@ namespace Icon.IntegrationTests
 {
     public class IconShould
     {
-        private string _fileName = GetGeckoDriverName();
+        private readonly string _fileName = GetGeckoDriverName();
 
         [Fact]
         public void DisplayExpectedText()
