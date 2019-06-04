@@ -51,7 +51,8 @@ namespace Icon.IntegrationTests
         private FirefoxDriver CreateWebDriver()
         {
             var currentDirectory = Environment.CurrentDirectory;
-            
+            var options = new FirefoxOptions();
+            options.AddArgument("--headless");
             var services = FirefoxDriverService.CreateDefaultService(currentDirectory,
                 _fileName);
             var driver = new FirefoxDriver(services);
