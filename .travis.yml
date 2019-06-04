@@ -13,5 +13,6 @@ script:
   - cd /home/travis/build/HilarySAccenture/IconPractice/Scripts/
   - ./StartDockerIcon
   - ./RunIntegrationTests
+  - ./IconCleanUp
   
 

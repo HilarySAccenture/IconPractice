@@ -1,0 +1,5 @@
+#!/bin/bash
+
+kill $(ps aux | grep '[I]conPractice.dll' | awk '{print $2}')
+docker stop iconDocker 
+docker rm iconDocker

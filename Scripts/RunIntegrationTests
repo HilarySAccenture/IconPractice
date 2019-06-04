@@ -2,8 +2,3 @@
 
 cd ../Icon.IntegrationTests
 dotnet test 
-
-
-kill $(ps aux | grep '[I]conPractice.dll' | awk '{print $2}')
-docker stop iconDocker 
-docker rm iconDocker
