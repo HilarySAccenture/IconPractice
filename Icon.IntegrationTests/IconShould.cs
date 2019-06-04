@@ -53,7 +53,6 @@ namespace Icon.IntegrationTests
             var currentDirectory = Environment.CurrentDirectory;
             var options = new FirefoxOptions();
             options.AddArgument("--headless");
-            Console.WriteLine(Environment.GetEnvironmentVariable("CURRENT_API_KEY"));
             var services = FirefoxDriverService.CreateDefaultService(currentDirectory,
                 _fileName);
             var driver = new FirefoxDriver(services, options);
