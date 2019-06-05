@@ -38,11 +38,9 @@ namespace Icon.UnitTests
             var response = caller.GetArticlesAsJson();
 
             var args = (RestRequest)mockClient.ReceivedCalls().First().GetArguments().First();
-
             Parameter requestApiKey = args.Parameters.FirstOrDefault(param => param.Name == "Authorization");
-
+            
             requestApiKey.Value.ShouldBeNull();
-
         }
     }
 }
