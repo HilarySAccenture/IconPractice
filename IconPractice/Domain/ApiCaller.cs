@@ -20,7 +20,7 @@ namespace IconPractice.Domain
             _apiKey = Environment.GetEnvironmentVariable("CURRENT_API_KEY");
         }
         
-        public string GetArticlesAsJson()
+        public string GetNewsAsJson()
         {
             var request = CreateRestRequest();
 

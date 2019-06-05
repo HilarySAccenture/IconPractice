@@ -29,7 +29,8 @@ namespace Icon.UnitTests
             var list = wrapper.Convert(jsonString);
             
            list.First().Title.ShouldContain("Sophie Turner Has a Surprising Way");
-
         }
+        
+        
     }
 }

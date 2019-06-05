@@ -22,7 +22,7 @@ namespace Icon.UnitTests
             
             var caller = new ApiCaller(mockClient, apiKey);
 
-            var response = caller.GetArticlesAsJson();
+            var response = caller.GetNewsAsJson();
             
             response.ShouldNotBeNullOrEmpty();
         }
@@ -35,7 +35,7 @@ namespace Icon.UnitTests
             
             var caller = new ApiCaller(mockClient, apiKey);
 
-            var response = caller.GetArticlesAsJson();
+            var response = caller.GetNewsAsJson();
 
             var args = (RestRequest)mockClient.ReceivedCalls().First().GetArguments().First();
             Parameter requestApiKey = args.Parameters.FirstOrDefault(param => param.Name == "Authorization");

@@ -10,6 +10,7 @@ namespace IconPractice.DataObject
         public List<ApiResponse> News { get; set; }
         
         public string Status { get; set; }
+     
 
     }
 }
