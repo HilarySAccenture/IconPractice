@@ -1,4 +1,4 @@
-namespace IconPractice.Models
+namespace IconPractice.Domain.Models
 {
     public class StoryDomainModel
     {

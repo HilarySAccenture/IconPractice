@@ -57,9 +57,34 @@ namespace Icon.UnitTests
             {
                 driver.Quit();
             }
-            
             buttonText.ShouldContain("get story");
         }
-        
+
+        [Fact]
+        public void ReturnAStoryView()
+        {
+            var currentDirectory = Environment.CurrentDirectory;
+            var fileName = "geckodrivermac";
+            var services = FirefoxDriverService.CreateDefaultService(currentDirectory, fileName);
+            var driver = new FirefoxDriver(services);
+
+            var page = string.Empty;
+            try
+            {
+                driver.Navigate().GoToUrl("http://localhost:5000/home/index");
+                driver.FindElementById("storyBtn").Click();
+
+                page = driver.Url;
+            }
+            catch (Exception ex)
+            {
+            }
+            finally
+            {
+                driver.Quit();
+            }
+            
+            page.ShouldContain("story");
+        }
     }
 }

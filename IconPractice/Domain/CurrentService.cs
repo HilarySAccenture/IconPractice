@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using IconPractice.Domain.DataObject;
+using IconPractice.Domain.Models;
 using IconPractice.Models;
 
 namespace IconPractice.Domain
@@ -13,6 +14,12 @@ namespace IconPractice.Domain
         {
             _caller = caller;
             _wrapper = wrapper;
+        }
+
+        public CurrentService()
+        {
+            _caller = new ApiCaller();
+            _wrapper = new ApiWrapper();
         }
         public StoryDomainModel GetStory()
         {

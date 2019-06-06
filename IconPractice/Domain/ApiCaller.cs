@@ -31,7 +31,7 @@ namespace IconPractice.Domain
 
         private RestRequest CreateRestRequest()
         {
-            var request = new RestRequest("latest-news", Method.GET);
+            var request = new RestRequest("language=en", Method.GET);
             request.AddHeader("Authorization", _apiKey);
 
             return request;
