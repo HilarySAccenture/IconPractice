@@ -33,7 +33,7 @@ namespace Icon.IntegrationTests
 
             result.ShouldContain("Gattaca");
         }
-        
+
         private static string GetGeckoDriverName()
         {
             var remoteFileName = Environment.GetEnvironmentVariable("TravisWebDriver");
