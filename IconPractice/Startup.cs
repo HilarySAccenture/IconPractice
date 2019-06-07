@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 
 
 namespace IconPractice
@@ -17,15 +18,19 @@ namespace IconPractice
         // This method gets called by the runtime. Use this method to add services to the container.
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         private string _currentApiKey = null;
+        private readonly ILogger<Startup> _logger;
+
         public IConfiguration Configuration { get; }
-        
-        public Startup(IConfiguration configuration)
+
+        public Startup(ILogger<Startup> logger, IConfiguration configuration)
         {
+            _logger = logger;
             Configuration = configuration;
         }
-        
+
         public void ConfigureServices(IServiceCollection services)
         {
+            _logger.LogInformation(Environment.CurrentDirectory);
             _currentApiKey = Configuration["Currents:ApiKey"];
             services.AddMvc();
         }
@@ -39,20 +44,19 @@ namespace IconPractice
             }
 
             var apiKey = Environment.GetEnvironmentVariable("CURRENT_API_KEY");
-            
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
 
-            //app.Run(async (context) => { await context.Response.WriteAsync("Hello World!"); });
+            app.UseStaticFiles();
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
-
         }
     }
 }

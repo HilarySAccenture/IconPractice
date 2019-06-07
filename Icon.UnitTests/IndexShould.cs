@@ -11,7 +11,7 @@ namespace Icon.UnitTests
         [Fact]
         public void DisplayExpectedTextInParagraphTag()
         {
-            var driver = CreateFireFoxDriver();
+            var driver = IconFireFoxDriver.CreateFireFoxDriver();
 
             var result = string.Empty;
 
@@ -34,7 +34,7 @@ namespace Icon.UnitTests
         [Fact]
         public void RenderAButton()
         {
-            var driver = CreateFireFoxDriver();
+            var driver = IconFireFoxDriver.CreateFireFoxDriver();
 
             var buttonText = string.Empty;
 
@@ -57,7 +57,7 @@ namespace Icon.UnitTests
         [Fact]
         public void ReturnAStoryView()
         {
-            var driver = CreateFireFoxDriver();
+            var driver = IconFireFoxDriver.CreateFireFoxDriver();
 
             var page = string.Empty;
             try
@@ -81,7 +81,7 @@ namespace Icon.UnitTests
         [Fact]
         public void IncludeReferenceToApiSite()
         {
-            var driver = CreateFireFoxDriver();
+            var driver = IconFireFoxDriver.CreateFireFoxDriver();
             var page = string.Empty;
             try
             {
@@ -92,22 +92,14 @@ namespace Icon.UnitTests
             }
             catch (Exception ex)
             {
-
             }
             finally
             {
                 driver.Quit();
             }
+
             page.ShouldContain("currentsapi.services");
         }
-
-        private static FirefoxDriver CreateFireFoxDriver()
-        {
-            var currentDirectory = Environment.CurrentDirectory;
-            const string FILE_NAME = "geckodrivermac";
-            var services = FirefoxDriverService.CreateDefaultService(currentDirectory, FILE_NAME);
-            var driver = new FirefoxDriver(services);
-            return driver;
-        }
+        
     }
 }
