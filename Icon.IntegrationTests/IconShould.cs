@@ -31,7 +31,7 @@ namespace Icon.IntegrationTests
                 driver.Quit();
             }
 
-            result.ShouldContain("Gattaca");
+            result.ShouldContain("Welcome");
         }
 
         private static string GetGeckoDriverName()
