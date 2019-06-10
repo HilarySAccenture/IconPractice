@@ -10,7 +10,6 @@ WORKDIR /app
 COPY *.sln .
 COPY IconPractice/. ./MVCApp/
 RUN dotnet restore ./MVCApp/IconPractice.csproj
-#COPY RONC/. ./FrontEndApp/
 
 #publish everything
 WORKDIR /app/MVCApp

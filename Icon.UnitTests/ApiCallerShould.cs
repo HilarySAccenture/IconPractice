@@ -27,18 +27,6 @@ namespace Icon.UnitTests
             response.ShouldNotBeNullOrEmpty();
         }
 
-        [Fact]
-        public void CreateTheCorrectApiCallWithParameters()
-        {
-            var mockClient = Substitute.For<IRestClient>();
-            string apiKey = null;
-            
-            var caller = new ApiCaller(mockClient, apiKey);
-
-           var actual = new RestRequest();
-            
-            
-        }
         
         [Fact]
         public void HaveNullApiKeyIfApiKeyIsNull()

@@ -20,7 +20,7 @@ namespace Icon.IntegrationTests
 
             try
             {
-                driver.Navigate().GoToUrl("http://localhost:8000/");
+                driver.Navigate().GoToUrl("http://localhost:5000/");
                 result = driver.FindElementByTagName("p").Text;
             }
             catch (WebDriverException ex)
