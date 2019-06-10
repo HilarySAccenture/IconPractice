@@ -16,7 +16,7 @@ namespace IconPractice.Domain
 
         public ApiCaller()
         {
-            _restClient = new RestClient("https://api.currentsapi.services/v1/");
+            _restClient = new RestClient("https://newsapi.org");
             _apiKey = Environment.GetEnvironmentVariable("CURRENT_API_KEY");
         }
         
@@ -25,14 +25,15 @@ namespace IconPractice.Domain
             var request = CreateRestRequest();
 
             var response = _restClient.Execute(request);
-
+        
             return response.Content;
         }
 
-        private RestRequest CreateRestRequest()
+        public RestRequest CreateRestRequest()
         {
-            var request = new RestRequest("language=en", Method.GET);
-            request.AddHeader("Authorization", _apiKey);
+            var request = new RestRequest("v2/top-headlines", Method.GET);
+            request.AddParameter("country", "us");
+            request.AddParameter("apiKey", _apiKey);
 
             return request;
         }

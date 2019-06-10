@@ -13,7 +13,7 @@ namespace IconPractice.Domain
 
             if (wrapper.Status == "ok")
             {
-                return wrapper.News;
+                return wrapper.Articles;
             }
             return null;
         }

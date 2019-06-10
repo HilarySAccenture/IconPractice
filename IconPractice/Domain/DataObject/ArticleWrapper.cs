@@ -7,7 +7,7 @@ namespace IconPractice.DataObject
 {
     public class ArticleWrapper
     {
-        public List<ApiResponse> News { get; set; }
+        public List<ApiResponse> Articles { get; set; }
         
         public string Status { get; set; }
      

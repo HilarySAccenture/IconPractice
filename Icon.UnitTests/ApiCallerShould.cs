@@ -28,6 +28,19 @@ namespace Icon.UnitTests
         }
 
         [Fact]
+        public void CreateTheCorrectApiCallWithParameters()
+        {
+            var mockClient = Substitute.For<IRestClient>();
+            string apiKey = null;
+            
+            var caller = new ApiCaller(mockClient, apiKey);
+
+           var actual = new RestRequest();
+            
+            
+        }
+        
+        [Fact]
         public void HaveNullApiKeyIfApiKeyIsNull()
         {
             var mockClient = Substitute.For<IRestClient>();
@@ -38,7 +51,7 @@ namespace Icon.UnitTests
             var response = caller.GetNewsAsJson();
 
             var args = (RestRequest)mockClient.ReceivedCalls().First().GetArguments().First();
-            Parameter requestApiKey = args.Parameters.FirstOrDefault(param => param.Name == "Authorization");
+            Parameter requestApiKey = args.Parameters.FirstOrDefault(param => param.Name == "apiKey");
             
             requestApiKey.Value.ShouldBeNull();
         }

@@ -31,7 +31,7 @@ namespace IconPractice
         public void ConfigureServices(IServiceCollection services)
         {
             _logger.LogInformation(Environment.CurrentDirectory);
-            _currentApiKey = Configuration["Currents:ApiKey"];
+            _currentApiKey = Configuration["News:ServiceApiKey"];
             services.AddMvc();
         }
 

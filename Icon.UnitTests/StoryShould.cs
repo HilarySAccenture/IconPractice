@@ -33,5 +33,30 @@ namespace Icon.UnitTests
             
             result.ShouldContain("currentsapi.services");
         }
+
+        [Fact]
+        public void DisplayAnArticleTitle()
+        {
+            var driver = IconFireFoxDriver.CreateFireFoxDriver();
+
+            var result = string.Empty;
+
+            try
+            {
+                driver.Navigate().GoToUrl("http://localhost:5000/story/getstory");
+                result = driver.FindElementById("title").Text;
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                {
+                    driver.Quit();
+                }
+            }
+            result.ShouldNotBeNullOrEmpty();
+        }
     }
 }
