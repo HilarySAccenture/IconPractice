@@ -6,6 +6,7 @@ using IconPractice.Domain;
 using IconPractice.Domain.DataObject;
 using IconPractice.Domain.Models;
 using IconPractice.Models;
+using Microsoft.AspNetCore.Mvc;
 using OpenQA.Selenium.Firefox;
 using Xunit;
 using Shouldly;
@@ -17,18 +18,16 @@ namespace Icon.UnitTests
 {
     public class StoryShould
     {
-        [Fact(Skip = "skipped")]
+        [Fact]
         public void ReturnAStoryViewModel()
         {
-            var mockCaller = Substitute.For<IApiCaller>();
-            var mockWrapper = Substitute.For<IApiWrapper>();
-            var service = new CurrentService(mockCaller, mockWrapper);
-            service.GetStory().Returns(new StoryDomainModel{Title = "test"});
-            var controller = new StoryController(service);
+            var mockService = Substitute.For<ICurrentService>();
+            var controller = new StoryController(mockService);
+            var storyModel = mockService.GetStory().Returns(new StoryDomainModel {Title = "test"});
 
             var result = controller.GetStory();
-            
-            var viewResult = Assert.IsType<StoryViewModel>(result);
+
+            var viewResult = Assert.IsType<ViewResult>(result);
             
         }
 
