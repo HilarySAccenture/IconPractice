@@ -19,7 +19,7 @@ namespace Icon.UnitTests
     public class StoryShould
     {
         [Fact]
-        public void ReturnAStoryViewModel()
+        public void ReturnsAStoryViewModelWithCorrectTitle()
         {
             var mockService = Substitute.For<ICurrentService>();
             var controller = new StoryController(mockService);
@@ -28,7 +28,8 @@ namespace Icon.UnitTests
             var result = controller.GetStory();
 
             var viewResult = Assert.IsType<ViewResult>(result);
-            
+            var model = Assert.IsAssignableFrom<StoryViewModel>(viewResult.ViewData.Model);
+            Assert.Equal("test", model.Title);
         }
 
 
