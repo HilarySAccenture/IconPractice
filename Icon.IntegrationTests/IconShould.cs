@@ -78,6 +78,30 @@ namespace Icon.IntegrationTests
 
             page.ShouldContain("currentsapi.services");
         }
+
+        [Fact]
+        public void ReturnAStoryView()
+        {
+            var driver = CreateFireFoxDriver();
+
+            var page = string.Empty;
+            try
+            {
+                driver.Navigate().GoToUrl("http://localhost:5000/home/index");
+                driver.FindElementById("storyBtn").Click();
+
+                page = driver.Url;
+            }
+            catch (Exception ex)
+            {
+            }
+            finally
+            {
+                driver.Quit();
+            }
+
+            page.ShouldContain("story");
+        }
         private static string GetGeckoDriverName()
         {
             var remoteFileName = Environment.GetEnvironmentVariable("TravisWebDriver");

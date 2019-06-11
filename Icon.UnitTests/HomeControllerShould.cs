@@ -21,29 +21,6 @@ namespace Icon.UnitTests
             //check name of view? 
         }
 
-        [Fact(Skip = "skip")]
-        public void ReturnAStoryView()
-        {
-            var driver = IconFireFoxDriver.CreateFireFoxDriver();
-
-            var page = string.Empty;
-            try
-            {
-                driver.Navigate().GoToUrl("http://localhost:5000/home/index");
-                driver.FindElementById("storyBtn").Click();
-
-                page = driver.Url;
-            }
-            catch (Exception ex)
-            {
-            }
-            finally
-            {
-                driver.Quit();
-            }
-
-            page.ShouldContain("story");
-        }
 
     
     }
