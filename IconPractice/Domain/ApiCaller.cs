@@ -5,8 +5,8 @@ namespace IconPractice.Domain
 {
     public class ApiCaller : IApiCaller
     {
-        private IRestClient _restClient;
-        private string _apiKey;
+        private readonly IRestClient _restClient;
+        private readonly string _apiKey;
 
         public ApiCaller(IRestClient restClient, string apiKey)
         {

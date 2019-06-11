@@ -3,7 +3,6 @@ using OpenQA.Selenium.Firefox;
 using Xunit;
 using Shouldly;
 using OpenQA.Selenium;
-using Moq;
 
 namespace Icon.UnitTests
 {

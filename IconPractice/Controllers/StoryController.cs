@@ -2,13 +2,19 @@ using System;
 using IconPractice.Domain;
 using IconPractice.Domain.Models;
 using IconPractice.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace IconPractice.Controllers
 {
     public class StoryController : Controller
     {
-        private CurrentService _service = new CurrentService();
+        private ICurrentService _service;
+
+        public StoryController(ICurrentService service)
+        {
+            _service = service;
+        }
 
         public IActionResult GetStory()
         {
@@ -22,9 +28,9 @@ namespace IconPractice.Controllers
             }
             catch (Exception ex)
             {
-                throw;
+                throw ex;
             }
-            
+
 
             return View("Story", viewModel);
         }

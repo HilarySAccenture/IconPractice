@@ -1,11 +1,10 @@
 using System.Collections.Generic;
 using IconPractice.Domain.DataObject;
 using IconPractice.Domain.Models;
-using IconPractice.Models;
 
 namespace IconPractice.Domain
 {
-    public class CurrentService
+    public class CurrentService : ICurrentService
     {
         private IApiCaller _caller;
         private IApiWrapper _wrapper;

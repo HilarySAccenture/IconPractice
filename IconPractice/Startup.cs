@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using IconPractice.Domain;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -32,7 +33,8 @@ namespace IconPractice
         {
             _logger.LogInformation(Environment.CurrentDirectory);
             _currentApiKey = Configuration["News:ServiceApiKey"];
-            services.AddMvc();
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddScoped(typeof(ICurrentService), typeof(CurrentService));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
