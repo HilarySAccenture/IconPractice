@@ -3,14 +3,14 @@ using OpenQA.Selenium.Firefox;
 using Xunit;
 using Shouldly;
 using OpenQA.Selenium;
+using Moq;
 
 namespace Icon.UnitTests
 {
     public class IndexShould
     {
-        
-        
-        
+
+
         [Fact(Skip = "skip")]
         public void DisplayExpectedTextInParagraphTag()
         {

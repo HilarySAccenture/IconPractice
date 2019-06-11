@@ -8,7 +8,7 @@ namespace Icon.UnitTests
 {
     public class StoryShould
     {
-        [Fact]
+        [Fact(Skip = "skip")]
         public void DisplayReferenceToApi()
         {
             var driver = IconFireFoxDriver.CreateFireFoxDriver();
@@ -34,7 +34,7 @@ namespace Icon.UnitTests
             result.ShouldContain("currentsapi.services");
         }
 
-        [Fact]
+        [Fact(Skip = "skip")]
         public void DisplayAnArticleTitle()
         {
             var driver = IconFireFoxDriver.CreateFireFoxDriver();
@@ -58,12 +58,6 @@ namespace Icon.UnitTests
             }
             result.ShouldNotBeNullOrEmpty();
         }
-
-        [Fact(Skip = "skipped")]
-        public void DisplayMultipleArticleTitlesIfMoreThanOneArticleReturned()
-        {
-            var driver = IconFireFoxDriver.CreateFireFoxDriver();
-            
-        }
+        
     }
 }
