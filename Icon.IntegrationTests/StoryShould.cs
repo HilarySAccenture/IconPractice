@@ -1,42 +1,18 @@
 using System;
-using System.Collections.Generic;
-using System.Xml.Serialization;
-using IconPractice.Controllers;
-using IconPractice.Domain;
-using IconPractice.Domain.DataObject;
-using IconPractice.Domain.Models;
-using IconPractice.Models;
-using Microsoft.AspNetCore.Mvc;
 using OpenQA.Selenium.Firefox;
-using Xunit;
 using Shouldly;
-using OpenQA.Selenium;
-using NSubstitute;
-using RestSharp;
+using Xunit;
 
-namespace Icon.UnitTests
+namespace Icon.IntegrationTests
 {
     public class StoryShould
     {
-        [Fact]
-        public void ReturnsAStoryViewModelWithCorrectTitle()
-        {
-            var mockService = Substitute.For<ICurrentService>();
-            var controller = new StoryController(mockService);
-            var storyModel = mockService.GetStory().Returns(new StoryDomainModel {Title = "test"});
-
-            var result = controller.GetStory();
-
-            var viewResult = Assert.IsType<ViewResult>(result);
-            var model = Assert.IsAssignableFrom<StoryViewModel>(viewResult.ViewData.Model);
-            Assert.Equal("test", model.Title);
-        }
-
-
+        private readonly string _fileName = GetGeckoDriverName();
+        
         [Fact(Skip = "skip")]
         public void DisplayReferenceToApi()
         {
-            var driver = IconFireFoxDriver.CreateFireFoxDriver();
+            var driver = CreateWebDriver();
 
             var result = string.Empty;
 
@@ -61,7 +37,7 @@ namespace Icon.UnitTests
         [Fact(Skip = "skip")]
         public void DisplayAnArticleTitle()
         {
-            var driver = IconFireFoxDriver.CreateFireFoxDriver();
+            var driver = CreateWebDriver();
 
             var result = string.Empty;
 
@@ -81,6 +57,31 @@ namespace Icon.UnitTests
             }
 
             result.ShouldNotBeNullOrEmpty();
+        }
+        
+        private static string GetGeckoDriverName()
+        {
+            var remoteFileName = Environment.GetEnvironmentVariable("TravisWebDriver");
+            var driverName = "geckodrivermac";
+
+            if (remoteFileName != null)
+            {
+                driverName = remoteFileName;
+            }
+
+            return driverName; 
+        }
+        
+        private FirefoxDriver CreateWebDriver()
+        {
+            var currentDirectory = Environment.CurrentDirectory;
+            var options = new FirefoxOptions();
+            options.AddArgument("--headless");
+            var services = FirefoxDriverService.CreateDefaultService(currentDirectory,
+                _fileName);
+            var driver = new FirefoxDriver(services, options);
+
+            return driver;
         }
     }
 }

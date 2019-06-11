@@ -4,7 +4,6 @@ using Xunit;
 using Shouldly;
 using OpenQA.Selenium.Firefox;
 
-
 namespace Icon.IntegrationTests
 {
     public class IconShould
@@ -12,9 +11,9 @@ namespace Icon.IntegrationTests
         private readonly string _fileName = GetGeckoDriverName();
 
         [Fact]
-        public void DisplayExpectedText()
+        public void DisplayExpectedTextInParagraphTag()
         {
-            var driver = CreateWebDriver();
+            var driver = CreateFireFoxDriver();
 
             var result = string.Empty;
 
@@ -34,6 +33,51 @@ namespace Icon.IntegrationTests
             result.ShouldContain("Welcome");
         }
 
+        [Fact]
+        public void RenderAButton()
+        {
+            var driver = CreateFireFoxDriver();
+
+            var buttonText = string.Empty;
+
+            try
+            {
+                driver.Navigate().GoToUrl("http://localhost:5000/home/index");
+                buttonText = driver.FindElementById("storyBtn").Text;
+            }
+            catch (Exception ex)
+            {
+            }
+            finally
+            {
+                driver.Quit();
+            }
+
+            buttonText.ShouldContain("get story");
+        }
+        
+        [Fact]
+        public void IncludeReferenceToApiSite()
+        {
+            var driver = CreateFireFoxDriver();
+            var page = string.Empty;
+            try
+            {
+                driver.Navigate().GoToUrl("http://localhost:5000/home/index");
+                driver.FindElementById("api-link").Click();
+
+                page = driver.Url;
+            }
+            catch (Exception ex)
+            {
+            }
+            finally
+            {
+                driver.Quit();
+            }
+
+            page.ShouldContain("currentsapi.services");
+        }
         private static string GetGeckoDriverName()
         {
             var remoteFileName = Environment.GetEnvironmentVariable("TravisWebDriver");
@@ -48,7 +92,7 @@ namespace Icon.IntegrationTests
         }
 
 
-        private FirefoxDriver CreateWebDriver()
+        private FirefoxDriver CreateFireFoxDriver()
         {
             var currentDirectory = Environment.CurrentDirectory;
             var options = new FirefoxOptions();
