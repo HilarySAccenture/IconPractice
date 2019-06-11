@@ -58,5 +58,12 @@ namespace Icon.UnitTests
             }
             result.ShouldNotBeNullOrEmpty();
         }
+
+        [Fact(Skip = "skipped")]
+        public void DisplayMultipleArticleTitlesIfMoreThanOneArticleReturned()
+        {
+            var driver = IconFireFoxDriver.CreateFireFoxDriver();
+            
+        }
     }
 }

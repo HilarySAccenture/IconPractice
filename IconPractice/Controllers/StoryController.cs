@@ -22,7 +22,9 @@ namespace IconPractice.Controllers
             }
             catch (Exception ex)
             {
+                throw;
             }
+            
 
             return View("Story", viewModel);
         }
